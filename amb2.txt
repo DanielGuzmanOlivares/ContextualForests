@@ -1,0 +1,75 @@
+arm#He has an injure in his arm
+arm#ARM is inside this computer
+arm#This shot came from that arm
+apple#Apple is fantastic for your health
+apple#Apple was the company behind The Beatles
+queen#Freddie was the lead singer of Queen
+queen#The Queen lives in Buckingham palace
+congress#Donald Trump will testify in congress
+tesla#Tesla created a lot of inventions that worked with electricity
+tesla#Tesla is developping new car batteries
+solution#The problem asked to find the solution of the equation
+solution#Boil the solution with salt
+key#I can't open the door cause i've lost my key
+key#Cryptography is all about finding the key
+key#You need to hash the key to map the value in the table
+mouse#Computer does not include mouse
+mouse#The mouse eat the cheese
+table#You can find information stored on that table
+table#I left the book on the table
+crane#I saw that crane at the construction site
+crane#That crane is an endangered species
+wood#That table is made of wood
+wood#Once you enter the green you will need to use a wood
+green#The hole is inside the green
+green#Green is the ecologist color
+letter#You can find my address in that letter
+letter#You can choose any letter in the English alphabet
+orange#I usually drink orange juice with my breakfast
+orange#Orange is the new black
+orange#Orange is a very peaceful city
+orange#Orange offers good mobiles
+dog#The dog ate the cat food
+dog#He was eating a hot dog
+goal#His determination will help him to achieve his goal
+goal#The player scored a goal
+rock#She is so into Queen, she loves rock
+rock#I saw a big rock in the geology lab
+car#We had to change a tire of my car
+cars#We went to the movies and saw Cars
+cat#I've got a dog and a cat
+cat#Computers are advancing in CAT on every language
+bass#I can hear the bass sound in the band
+bass#He loves grilled bass with potatoes
+pen#I need a pen to continue my writting
+pen#All the sheeps where in the pen
+pen#He was in the pen for murder
+horse#He knew how to ride a horse
+horse#She jumped over the horse at the gym
+knight#The castle had a knight guarding it
+knight#He moved his knight next to the pawn
+yesterday#I didn't have the time yesterday, I'll try it today
+yesterday#Yesterday is an amazing song
+break#Nadal is playing a break point
+break#I'm having a break from work tomorrow
+queen#He moved the queen and it was check
+head#He is the head of the government
+head#She has an injure at the back of her head
+field#Many animals can be found in this vast field
+field#The quotient field of this algebraic extension
+field# Maxwell proved that there is always a magnetic field induced by an electrical current
+field#I am particularly interested in the study of that field
+bar#After the LSAT he needs to pass the Bar
+bar#The policeman entered the bar and asked for a drink
+flash#Flash and Superman are both superheores
+flash#That flash was so bright it blinded me
+scale#The scale on this map is confussing me
+scale#I can play a major scale with my piano
+string#String theory describe electrons as a lot of tiny moving particles
+string# The violin is a string instrument
+hammer#I need a hammer for this nails
+hammer#Ear damage includes hammer fractures
+ray# A ray can only cross another one in one point
+ray# I saw a ray in the ocean while I was swimming
+mouth#The dentist told him to open his mouth
+mouth#The water is fresh at the mouth, on that mountain.
