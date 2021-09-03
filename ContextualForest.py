@@ -180,7 +180,7 @@ def set_relevance(stem_dict, text_len, n_chunks=100):
 
     Parameters
     ----------
-        stem_dict : dict of tuple : tuple
+        stem_dict : dict
             statistical dictionary created from a text (see stem_text()).
         text_len : int
             the number of different words in text after cleaning.
