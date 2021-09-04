@@ -1,4 +1,2 @@
-*.p
-*.txt
-.ipynb_checkpoints
-*pycache*
+src/ipynb_checkpoints
+src/pycache*
