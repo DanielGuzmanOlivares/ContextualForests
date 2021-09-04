@@ -89,27 +89,13 @@ At this point, using the Trees we have all the necessary tools to disambiguate c
                 possible_meanings = 1
             print(f"Word: {word}\t possible meanings: {possible_meanings}\n Choosen: {node.page.text[:100]} ...")
     
+    Word: rock	 possible meanings: 49
+    Choosen: Rock music is a broad genre of popular music that originated as "rock and roll" in the United States ...
+    Word: songs	 possible meanings: 1
+    Choosen: A song is a musical composition intended to be performed by the human voice. This is often done at d ...
+    Word: queen	 possible meanings: 40
+    Choosen: Queen are a British rock band formed in London in 1970. Their classic line-up was Freddie Mercury (l ...
+    
 ```
-Which prints
-
-Word: rock	 possible meanings: 49
-
-
- Choosen: Rock music is a broad genre of popular music that originated as "rock and roll" in the United States ...
-
-
-Word: songs	 possible meanings: 1
-
-
- Choosen: A song is a musical composition intended to be performed by the human voice. This is often done at d ...
-
-
-Word: queen	 possible meanings: 40
-
-
- Choosen: Queen are a British rock band formed in London in 1970. Their classic line-up was Freddie Mercury (l ...
-
- 
-
 
 Note that the algortihm is far from perfect and sometimes can fail to disambiguate context but this approach proves that context can be disambiguated by mining some specific pieces of information in graph-based structures (Knowledge Graphs) mimicing a reasoning process instead of training with millions of examples and learning the statistical information needed for disambiguation from them. This idea to put effort in the *how* models learn instead of *how much* data we have to scale our model capabilities is, in my opinion, something that definetly deserves consideration in order to build models that could ultimatly reason like we humans do.
