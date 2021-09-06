@@ -32,14 +32,12 @@ Depending on the answer to this question we can roughly classify language models
 
     <figure>
     <img src="./imgs/glove.png" alt="drawing" width="500"/>
-    <figcaption align="center"> GloVe embeddings representation </figcaption>
     </figure>
 
 * **Dynamic-embedding models** like [ELMo](https://arxiv.org/pdf/1802.05365.pdf), [BERT](https://arxiv.org/pdf/1810.04805.pdf) and [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) are based on an architecture call "transformers" and since their first appearance arround 2018, they have been at the top of the NLP world. The difference between this models and the context-free ones is that in this kind of models the embedding of a word is actually assigned **depending** on the other words in the context. They also need a huge corpus for training and considerably more computational power than the context-free models but the results in the WSD problem are significantly better.
 
     <figure>
     <center><img src="./imgs/green.png" alt="drawing" width="500"/></center>
-    <figcaption> Similarity comparison for RoBERTa embeddings  </figcaption>
     </figure>
 
 Although dynamic-embedding models have a significantly better performance in the WSD problem, there is a key aspect in the training process that they share with the context-free models; they both need a big text corpus. Having this big corpus for training means that with enough computational power and some fancy architectures one can build a pretty decent model entirely based on statistics infered from the corpus (like training masked language models or predicting the next word like the GPT family) with no real understanding of the concepts that language represents. 
@@ -55,7 +53,6 @@ So I wanted to built a disambiguation system through semantical connections usin
 
 <figure>
 <center><img src="./imgs/model_idea.png" alt="drawing" width="500"/></center>
-<figcaption> An example with a sentence about Tesla of the idea behind the model</figcaption>
 </figure>
 
 ### Step by step
@@ -64,7 +61,6 @@ So I wanted to built a disambiguation system through semantical connections usin
 
 <figure>
 <img src="./imgs/disambiguation.png" alt="drawing" width="500"/>
-<figcaption> Wikipedia disambiguation page for Queen</figcaption>
 </figure>
 
 
@@ -85,21 +81,18 @@ So how do we define a relevant link? For figuring that out, we need to define wh
 
 <figure>
 <center><img src="./imgs/metrics.png" alt="drawing" width="500"/></center>
-<figcaption>Frequency count vs uniformly distributed words</figcaption>
 </figure>
 
 After that I tried to define link relevance as the average relevance of the words composing the link's title. This prooved to be innefective as a relevance metric because using a non-weighted average can be pretty sensitive to outliers resulting in a bias towards links that have the most relevant word as part of the title. To solve this issue I studied the distribution of the relevance score which I realised could be approximated by Zipf's distribution.
 
 <figure>
 <center><img src="./imgs/zipf.png" alt="drawing" width="500"/></center>
-<figcaption>Fitting a Zipf distribution to the relevance of the words in Steve Jobs Wikipedia page</figcaption>
 </figure>
 
 Instead of computing link relevance as a simple average, I defined it as the inverse image of an average over rank positions capturing the decreasing factor on the scoring values to correct the bias.
 
 <figure>
 <center><img src="./imgs/link_relevance.png" alt="drawing" width="500"/></center>
-<figcaption>Example of link relevance ("Apple Store" in Steve Jobs Wikipedia page) </figcaption>
 </figure>
 At this point, using the Trees we have all the necessary tools to disambiguate context with this non-supervised technique
 
