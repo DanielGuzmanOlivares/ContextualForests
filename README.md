@@ -63,9 +63,10 @@ So I wanted to built a disambiguation system through semantical connections usin
  The first step is identifying nouns in a sentence and finding all possible meanings for every one. This could have been a problem but forunatly Wikipedia has pages specifically designed for this task:
 
 <figure>
-<center><img src="./imgs/disambiguation.png" alt="drawing" width="500"/></center>
+<img src="./imgs/disambiguation.png" alt="drawing" width="500"/>
 <figcaption> Wikipedia disambiguation page for Queen</figcaption>
 </figure>
+
 
 
 After finding possible meanings, it's worth mentioning that a Wikipedia page has a rather large number of links that recursively expanded can yield to a computationally infeasable search problem. For this reason, the next thing the algorithm needed was a "relevance function" that could evaluate which links to expand in order to quickly find a connection between Trees (this is commonly known in computer science as a heuristic function). This heuristic function needed to represent how close two Wikipedia articles are. At first, I thought in just finding common links between articles, but as it turns out, it's not uncommon for two Wikipedia pages that are not related at all to have a few common links:
