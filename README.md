@@ -1,12 +1,12 @@
 ## What is this project?
-This project contains an implementation in Python of the Contextual Forest, an unsupervised model for language disambiguation that I designed during [my bachelor's thesis](http://t.ly/bBNd). It includes a demo notebook with
+This project contains the implementation in Python of the Contextual Forest, an unsupervised model for language disambiguation that I developed during [my bachelor's thesis](http://t.ly/bBNd). It includes a demo notebook with
 code snippets showing the main functionality and informally exposes the ideas behind the model as well as 
 the key points discussed in my bachelor's thesis regarding the task of Word Sense Disambiguation (WSD).
 
 ## Introduction
 
 Contextual Forests, as many other language models, operate under the assumption that the meaning of a word in a sentence can
-be fully determined by it's context (i.e. the other words in the sentence). If one thinks about it for a second that seems like
+be fully determined by it's context (i.e. the other words in the sentence). If one thinks about it for a second, it seems like
 a very reasonable thing to assume considering that this is essentially what humans do when we communicate with each other.
 
 Unfortunately, in many situations context has proven to be rather difficult to figure out using even the most advanced techniques. 
@@ -102,4 +102,4 @@ At this point, using the Trees we have all the necessary tools to disambiguate c
     
 ```
 
-Note that the algortihm is far from perfect and sometimes can fail to disambiguate context but this approach proves that context can be disambiguated by mining some specific pieces of information in graph-based structures (Knowledge Graphs) mimicing a reasoning process instead of training with millions of examples and learning the statistical information needed for disambiguation from them. This idea to put effort in the *how* models learn instead of *how large* model capabilities are, in my opinion, something that definetly deserves consideration in order to build models that could ultimatly reason like we humans do.
+Note that the algortihm is far from perfect and sometimes can fail to disambiguate some words but this approach proves that context can be determined by mining some specific pieces of information in graph-based structures (Knowledge Graphs) mimicing a reasoning process instead of training with millions of examples and learning the statistical information needed for disambiguation from them. This idea to put effort in the *how* models learn instead of *how large* model capabilities are, in my opinion, something that definetly deserves consideration in order to build models that could ultimatly reason like we humans do.
