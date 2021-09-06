@@ -31,8 +31,8 @@ Depending on the answer to this question we can roughly classify language models
 * **Context-free models** such as [Word2Vec](https://arxiv.org/pdf/1301.3781.pdf) or [GloVe](https://nlp.stanford.edu/pubs/glove.pdf), are based on creating a 1:1 mapping between words and vectors (which are usually referred to as word embeddings). Although specifics in the implementation may be different, the general idea for this models consists in training a neural network over a large corpus of text to get a representation that captures semantic properties. For example if we consider the vectors $k, w, m$ corresponding to the words "king", "woman" and "man" respectively, then the vector $q = (k - m) + w$ it's very close to the one assigned to the word "queen". This can be extremely useful in many situations but it's rather complicated to solve the WSD problem with this kind of models since the embedding for every word is unique and independent from the context.
 
     <figure>
-    <center><img src="./imgs/glove.png" alt="drawing" width="500"/></center>
-    <figcaption> GloVe embeddings representation </figcaption>
+    <img src="./imgs/glove.png" alt="drawing" width="500"/>
+    <figcaption align="center"> GloVe embeddings representation </figcaption>
     </figure>
 
 * **Dynamic-embedding models** like [ELMo](https://arxiv.org/pdf/1802.05365.pdf), [BERT](https://arxiv.org/pdf/1810.04805.pdf) and [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) are based on an architecture call "transformers" and since their first appearance arround 2018, they have been at the top of the NLP world. The difference between this models and the context-free ones is that in this kind of models the embedding of a word is actually assigned **depending** on the other words in the context. They also need a huge corpus for training and considerably more computational power than the context-free models but the results in the WSD problem are significantly better.
