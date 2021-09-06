@@ -30,17 +30,17 @@ Depending on the answer to this question we can roughly classify language models
 
 * **Context-free models** such as [Word2Vec](https://arxiv.org/pdf/1301.3781.pdf) or [GloVe](https://nlp.stanford.edu/pubs/glove.pdf), are based on creating a 1:1 mapping between words and vectors (which are usually referred to as word embeddings). Although specifics in the implementation may be different, the general idea for this models consists in training a neural network over a large corpus of text to get a representation that captures semantic properties. For example if we consider the vectors $k, w, m$ corresponding to the words "king", "woman" and "man" respectively, then the vector $q = (k - m) + w$ it's very close to the one assigned to the word "queen". This can be extremely useful in many situations but it's rather complicated to solve the WSD problem with this kind of models since the embedding for every word is unique and independent from the context.
 
-    <p>
+    <figure>
     <center><img src="./imgs/glove.png" alt="drawing" width="500"/></center>
-    <em> GloVe embeddings representation </em>
-    </p>
+    <figcaption> GloVe embeddings representation </figcaption>
+    </figure>
 
 * **Dynamic-embedding models** like [ELMo](https://arxiv.org/pdf/1802.05365.pdf), [BERT](https://arxiv.org/pdf/1810.04805.pdf) and [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) are based on an architecture call "transformers" and since their first appearance arround 2018, they have been at the top of the NLP world. The difference between this models and the context-free ones is that in this kind of models the embedding of a word is actually assigned **depending** on the other words in the context. They also need a huge corpus for training and considerably more computational power than the context-free models but the results in the WSD problem are significantly better.
 
-    <p>
+    <figure>
     <center><img src="./imgs/green.png" alt="drawing" width="500"/></center>
-    <em> Similarity comparison for RoBERTa embeddings  </em>
-    </p>
+    <figcaption> Similarity comparison for RoBERTa embeddings  </figcaption>
+    </figure>
 
 Although dynamic-embedding models have a significantly better performance in the WSD problem, there is a key aspect in the training process that they share with the context-free models; they both need a big text corpus. Having this big corpus for training means that with enough computational power and some fancy architectures one can build a pretty decent model entirely based on statistics infered from the corpus (like training masked language models or predicting the next word like the GPT family) with no real understanding of the concepts that language represents. 
 
@@ -53,19 +53,19 @@ While I was thinking about how people solve the WSD problem on a daily basis in 
 
 So I wanted to built a disambiguation system through semantical connections using the possible context of the words in a sentence. I thought that using context for making connections to find common ground between word meanings sounded a lot like spanning nodes in searching algorithms over graphs so I decided to model this disambiguation process as different Trees (one for each possible meaning) trying to connect with each other. Given a word, to make the model work I needed some kind of context about possible meanings organized in a structure similar to a graph so I decided to use Wikipedia. Unfortunatly, Wikipedia only provides articles about nouns (objects / people / events ...) so due to this impass and time restrictions the implemented version of Contextual Forests only works for disambiguating nouns. Nevertheless, the process is easily scalable if one finds another resource for covering more words.
 
-<p>
+<figure>
 <center><img src="./imgs/model_idea.png" alt="drawing" width="500"/></center>
-<em> An example with a sentence about Tesla of the idea behind the model</em>
-</p>
+<figcaption> An example with a sentence about Tesla of the idea behind the model</figcaption>
+</figure>
 
 ### Step by step
  
  The first step is identifying nouns in a sentence and finding all possible meanings for every one. This could have been a problem but forunatly Wikipedia has pages specifically designed for this task:
 
-<p>
+<figure>
 <center><img src="./imgs/disambiguation.png" alt="drawing" width="500"/></center>
-<em> Wikipedia disambiguation page for Queen</em>
-</p>
+<figcaption> Wikipedia disambiguation page for Queen</figcaption>
+</figure>
 
 
 After finding possible meanings, it's worth mentioning that a Wikipedia page has a rather large number of links that recursively expanded can yield to a computationally infeasable search problem. For this reason, the next thing the algorithm needed was a "relevance function" that could evaluate which links to expand in order to quickly find a connection between Trees (this is commonly known in computer science as a heuristic function). This heuristic function needed to represent how close two Wikipedia articles are. At first, I thought in just finding common links between articles, but as it turns out, it's not uncommon for two Wikipedia pages that are not related at all to have a few common links:
@@ -82,24 +82,24 @@ What would eventually end up working was using the *relevant links* and this was
 
 So how do we define a relevant link? For figuring that out, we need to define what words are relevant in a Wikipedia page. I identified relevant words with the ones uniformly distributed over the text (note that this relevant words don't need to be repeated many times but just a few times every once in a while). 
 
-<p>
+<figure>
 <center><img src="./imgs/metrics.png" alt="drawing" width="500"/></center>
-<em>Frequency count vs uniformly distributed words</em>
-</p>
+<figcaption>Frequency count vs uniformly distributed words</figcaption>
+</figure>
 
 After that I tried to define link relevance as the average relevance of the words composing the link's title. This prooved to be innefective as a relevance metric because using a non-weighted average can be pretty sensitive to outliers resulting in a bias towards links that have the most relevant word as part of the title. To solve this issue I studied the distribution of the relevance score which I realised could be approximated by Zipf's distribution.
 
-<p>
+<figure>
 <center><img src="./imgs/zipf.png" alt="drawing" width="500"/></center>
-<em>Fitting a Zipf distribution to the relevance of the words in Steve Jobs Wikipedia page</em>
-</p>
+<figcaption>Fitting a Zipf distribution to the relevance of the words in Steve Jobs Wikipedia page</figcaption>
+</figure>
 
 Instead of computing link relevance as a simple average, I defined it as the inverse image of an average over rank positions capturing the decreasing factor on the scoring values to correct the bias.
 
-<p>
+<figure>
 <center><img src="./imgs/link_relevance.png" alt="drawing" width="500"/></center>
-<em>Example of link relevance ("Apple Store" in Steve Jobs Wikipedia page) </em>
-</p>
+<figcaption>Example of link relevance ("Apple Store" in Steve Jobs Wikipedia page) </figcaption>
+</figure>
 At this point, using the Trees we have all the necessary tools to disambiguate context with this non-supervised technique
 
 ```python
