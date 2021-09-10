@@ -5,14 +5,17 @@ import re
 import string
 import wikipediaapi
 import en_core_web_lg
+import es_core_news_lg
 import itertools
 from nltk.stem.snowball import SnowballStemmer
 from scipy.optimize import curve_fit
 from nltk.stem import WordNetLemmatizer
 from queue import PriorityQueue as pq
+import spacy
 
 
 # Global variables
+
 stemmer = SnowballStemmer(language='english')
 wiki = wikipediaapi.Wikipedia('en') # Wikipedia API object configured to English
 nlp = en_core_web_lg.load()
@@ -21,7 +24,6 @@ stopwords_path = "stopwords.txt"
 lemmatizer = WordNetLemmatizer() 
 with open(stopwords_path) as file:
         stop_words = [x.strip() for x in file.readlines()]
-
 
 ####################### Interface with Wikipedia ##########################
 
@@ -68,7 +70,8 @@ def disambiguation(noun):
     'The Story of Bohemian Rhapsody']
 
     """
-    dis_title = f"{noun} (disambiguation)"
+    #dis_title = f"{noun} (disambiguation)"
+    dis_title = f"{noun} (desambiguacion)"
     return [x for x in wiki.page(dis_title).links if not _internal_page(x) and noun.lower() in x.lower()]
 
 
@@ -445,7 +448,8 @@ class Tree():
         self.word = word
         # disambiguation page exists
         if len(disambiguation(root_word)) != 0:
-            self.root = Node(wiki.page("{} (disambiguation)".format(root_word)), 0, title = word, d=exp)
+            #self.root = Node(wiki.page("{} (disambiguation)".format(root_word)), 0, title = word, d=exp)
+            self.root = Node(wiki.page("{} (desambiguacion)".format(root_word)), 0, title = word, d=exp)
             #expands first level to every possibility
             self.root.expand()
             self.expanded, self.to_expand = [self.root], list(self.root.children.keys())
@@ -581,7 +585,7 @@ class Forest():
 
 
 def contextual_forest(text):
-    """ Performs a conttextual forest disambiguation.
+    """ Performs a contextual forest disambiguation.
         
         Parameters
         ----------
