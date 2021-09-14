@@ -5,13 +5,11 @@ import re
 import string
 import wikipediaapi
 import en_core_web_lg
-import es_core_news_lg
 import itertools
 from nltk.stem.snowball import SnowballStemmer
 from scipy.optimize import curve_fit
 from nltk.stem import WordNetLemmatizer
 from queue import PriorityQueue as pq
-import spacy
 
 
 # Global variables
