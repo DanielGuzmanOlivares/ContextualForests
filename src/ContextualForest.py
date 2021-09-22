@@ -68,8 +68,7 @@ def disambiguation(noun):
     'The Story of Bohemian Rhapsody']
 
     """
-    #dis_title = f"{noun} (disambiguation)"
-    dis_title = f"{noun} (desambiguacion)"
+    dis_title = f"{noun} (disambiguation)"
     return [x for x in wiki.page(dis_title).links if not _internal_page(x) and noun.lower() in x.lower()]
 
 
