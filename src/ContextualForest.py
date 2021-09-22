@@ -445,8 +445,7 @@ class Tree():
         self.word = word
         # disambiguation page exists
         if len(disambiguation(root_word)) != 0:
-            #self.root = Node(wiki.page("{} (disambiguation)".format(root_word)), 0, title = word, d=exp)
-            self.root = Node(wiki.page("{} (desambiguacion)".format(root_word)), 0, title = word, d=exp)
+            self.root = Node(wiki.page("{} (disambiguation)".format(root_word)), 0, title = word, d=exp)
             #expands first level to every possibility
             self.root.expand()
             self.expanded, self.to_expand = [self.root], list(self.root.children.keys())
