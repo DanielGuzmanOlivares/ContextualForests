@@ -175,7 +175,7 @@ def stem_text(text):
                     dic[key]["words"].add(word)
     return dic, len(content)
 
-def set_relevance(stem_dict, text_len, n_chunks=100):
+def set_relevance(stem_dict, text_len, n_chunks=300):
     """Fixes relevance and position for every word in the statistical dictionary.
 
     Parameters
@@ -347,7 +347,7 @@ class Node():
         words = nlp(link) #tokenization
         rel = []
         # contingency measure for not expanding the same link or an internal link
-        if (self.title.lower() in link.lower() and self.depth == 1) or ":" in link:
+        if (self.title.lower() in link.lower()) or ":" in link:
                 return 0
         for word in words:
             try:
@@ -440,7 +440,7 @@ class Tree():
             Expands the given node from the tree.
     
     """
-    def __init__(self, root_word, exp=10):
+    def __init__(self, root_word, exp=20):
         word = root_word.lower()
         self.word = word
         # disambiguation page exists
@@ -639,6 +639,7 @@ def contextual_forest(text):
     fr = Forest(sentence) 
     fr.disambiguate()
     fr.recover_words()
+    fr.dic = {k : v for k,v in fr.dic.items() if v != None}
     return fr
         
 
